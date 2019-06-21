@@ -20,13 +20,13 @@ export const FETCHING = 'FETCHING';
 export const FETCHING_SUCCESS = 'FETCHING_SUCCESS';
 export const FETCHING_FAILED = 'FETCHING_FAILED';
 
-export const getSmurfs = () => {
-  dispatchEvent({ type: FETCHING });
+export const getSmurfs = () => dispatch => {
+  dispatch({ type: FETCHING });
   axios
     .get(`http://localhost:3333/smurfs`)
     .then(res => {
       console.log(res.data)
-      dispatchEvent({ type: FETCHING_SUCCESS, payload: res.data })
+      dispatch({ type: FETCHING_SUCCESS, payload: res.data })
     })
-    .catch(err => dispatchEvent({ type: FETCHING_FAILED }))
+    .catch(err => dispatch({ type: FETCHING_FAILED }))
 }
