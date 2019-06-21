@@ -23,8 +23,16 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+Actions are the various events and potential outcomes to those events in your app. Actions will usually have 3 conditions, a starting phase, a success, and a failure. They will perform various actions based on what the outcome is. These actions are then passed to the reducers. Reducers are where changes to the store (state) happen. Their job is to modify the store as is necessary based on the action type sent to them. The store is where all the state for the app is stored. It is known as a 'single source of truth' because it is the one place that app data should be stored.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is state that the whole application needs and has access to, whereas Component state is state that only one specific component or component tree has access to. They both have their uses. For example Application state is used for data that the whole app needs, such as user information when a user logs onto a website. Component state is very useful for UI state, such as updating what is shown in an input field.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+Redux-thunk allows developers to pass in functions to their action-creators where they usually have to pass objects. This allows for them to perform asynchronous actions, such as an API call with Axios. It changes action creators by allowing for the developer to pass in functions rather than objects and then dispatch them themselves.
 
 ## Project Set Up
 
