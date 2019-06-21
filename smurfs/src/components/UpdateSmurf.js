@@ -6,7 +6,11 @@ class UpdateSmurf extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            smurf: this.props.specificSmurf
+            smurf: {
+                name: this.props.specificSmurf.name,
+                age: this.props.specificSmurf.age,
+                height: this.props.specificSmurf.height
+            }
         }
     }
 
@@ -14,6 +18,8 @@ class UpdateSmurf extends React.Component {
         const id = this.props.match.params.id;
         this.props.getSpecificSmurf(id);
     }
+
+
 
     handleInputChange = e => {
         this.setState({
@@ -26,7 +32,7 @@ class UpdateSmurf extends React.Component {
 
     deleteSmurf = e => {
         e.preventDefault();
-        this.props.deleteSmurf(this.state.smurf);
+        this.props.deleteSmurf(this.props.specificSmurf);
         this.props.history.push('/')
     }
 
@@ -34,7 +40,7 @@ class UpdateSmurf extends React.Component {
         return (
             <div className='smurf-form'>
             <form>
-                <input type='text' name='name' placeholder='Name' value={this.state.smurf.name} onChange={this.handleInputChanges} />
+                <input type='text' name='smurf.name' placeholder='Name' value={this.state.smurf.name} onChange={this.handleInputChanges} />
                 <input type='text' name='age' placeholder='Age' value={this.state.smurf.age} onChange={this.handleInputChanges} />
                 <input type='text' name='height' placeholder='Height' value={this.state.smurf.height} onChange={this.handleInputChanges} />
                 <button>Submit</button>

@@ -93,6 +93,7 @@ export const reducer = (state = initialState, action) => {
     case FETCHING_SPECIFIC_SMURF:
       return {
         ...state,
+        specificSmurf: {},
         fetchingSmurfs: true,
         error: null
       }
