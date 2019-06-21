@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { getSmurfs } from '../actions/index';
 import Smurf from './Smurf';
@@ -12,12 +13,15 @@ class SmurfList extends React.Component {
     render() {
         console.log(this.props.smurfs)
         return (
-            <div className='smurf-list'>
-                {this.props.smurfs.map(smurf => {
-                    return (
-                        <Smurf smurf={smurf} key={smurf.id} />
-                    )
-                })}
+            <div>
+                <div  className='smurf-list'>
+                    {this.props.smurfs.map(smurf => {
+                        return (
+                            <Smurf smurf={smurf} key={smurf.id} />
+                        )
+                    })}
+                </div>
+                <button><Link to='/add-smurf'>Add A Smurf!</Link></button>
             </div>
         )
     }

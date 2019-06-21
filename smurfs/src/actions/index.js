@@ -45,3 +45,32 @@ export const addSmurf = smurf => dispatch => {
     })
     .catch(err => dispatch({ type: ADD_FAILED }))
 }
+
+export const DELETE_SMURF = 'DELETE_SMURF';
+export const DELETE_SUCCESS = 'DELETE_SUCCESS';
+export const DELETE_FAILED = 'DELETE_FAILED';
+
+export const deleteSmurf = smurf => dispatch => {
+  dispatch({ type: DELETE_SMURF });
+  axios
+    .delete(`http://localhost:3333/smurfs/${smurf.id}`)
+    .then(res => {
+      dispatch({ type: DELETE_SUCCESS, payload: res.data})
+    })
+    .catch(err => dispatch({ type: DELETE_FAILED }))
+}
+
+export const FETCHING_SPECIFIC_SMURF = 'FETCHING_SPECIFIC_SMURF';
+export const FETCHING_SPECIFIC_SMURF_SUCCESS = 'FETCHING_SPECIFIC_SMURF_SUCCESS';
+export const FETCHING_SPECIFIC_SMURF_FAILED = 'FETCHING_SPECIFIC_SMURF_FAILED';
+
+export const getSpecificSmurf = id => dispatch => {
+  dispatch({ type: FETCHING_SPECIFIC_SMURF });
+  axios
+    .get(`http://localhost:3333/smurfs/${id}`)
+    .then(res => {
+      console.log(res.data)
+      dispatch({ type: FETCHING_SPECIFIC_SMURF_SUCCESS, payload: res.data })
+    })
+    .catch(err => dispatch({ type: FETCHING_SPECIFIC_SMURF_FAILED }))
+}

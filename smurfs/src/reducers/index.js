@@ -21,10 +21,11 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
-import { FETCHING, FETCHING_SUCCESS, FETCHING_FAILED, ADD_SMURF, ADD_SUCCESS, ADD_FAILED } from '../actions/index';
+import { FETCHING, FETCHING_SUCCESS, FETCHING_FAILED, ADD_SMURF, ADD_SUCCESS, ADD_FAILED, DELETE_SMURF, DELETE_FAILED, DELETE_SUCCESS, FETCHING_SPECIFIC_SMURF, FETCHING_SPECIFIC_SMURF_FAILED, FETCHING_SPECIFIC_SMURF_SUCCESS } from '../actions/index';
 
 const initialState = {
   smurfs: [],
+  specificSmurf: [],
   fetchingSmurfs: false,
   addingSmurf: false,
   updatingSmurf: false,
@@ -68,6 +69,44 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         addingSmurf: false,
+        error: true
+      }
+    case DELETE_SMURF:
+      return {
+        ...state,
+        deletingSmurf: true,
+        error: null
+      }
+    case DELETE_SUCCESS:
+      return {
+        ...state,
+        deletingSmurf: false,
+        smurfs: action.payload,
+        error: null
+      }
+    case DELETE_FAILED:
+      return {
+        ...state,
+        deletingSmurf: false,
+        error: true
+      }
+    case FETCHING_SPECIFIC_SMURF:
+      return {
+        ...state,
+        fetchingSmurfs: true,
+        error: null
+      }
+    case FETCHING_SPECIFIC_SMURF_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        specificSmurf: action.payload,
+        error: null
+      }
+    case FETCHING_SPECIFIC_SMURF_FAILED:
+      return {
+        ...state,
+        fetchingSmurfs: false,
         error: true
       }
     default:
