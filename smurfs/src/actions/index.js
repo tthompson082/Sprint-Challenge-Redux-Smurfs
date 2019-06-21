@@ -13,3 +13,20 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+import axios from 'axios';
+
+export const FETCHING = 'FETCHING';
+export const FETCHING_SUCCESS = 'FETCHING_SUCCESS';
+export const FETCHING_FAILED = 'FETCHING_FAILED';
+
+export const getSmurfs = () => {
+  dispatchEvent({ type: FETCHING });
+  axios
+    .get(`http://localhost:3333/smurfs`)
+    .then(res => {
+      console.log(res.data)
+      dispatchEvent({ type: FETCHING_SUCCESS, payload: res.data })
+    })
+    .catch(err => dispatchEvent({ type: FETCHING_FAILED }))
+}
