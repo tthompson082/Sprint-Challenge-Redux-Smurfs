@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 
 import SmurfList from './SmurfList';
+import SmurfForm from './SmurfForm';
 
 import './App.css';
 /*
@@ -11,24 +12,13 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      collapsed: true
-    };
-  }
-
-  toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed
-    })
-  }
 
   render() {
     return (
       <div className="App">
         <h1>Smurfs</h1>
         <SmurfList />
+        <SmurfForm />
       </div>
     );
   }

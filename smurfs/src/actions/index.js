@@ -35,7 +35,7 @@ export const ADD_SMURF = 'ADD_SMURF';
 export const ADD_SUCCESS = 'ADD_SUCCESS';
 export const ADD_FAILED = 'ADD_FAILED';
 
-export const addSmurf = smurf => dispatch() => {
+export const addSmurf = smurf => dispatch => {
   dispatch({ type: ADD_SMURF });
   axios
     .post(`http://localhost:3333/smurfs`, smurf)
