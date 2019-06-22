@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
 import { getSmurfs } from '../actions/index';
 import Smurf from './Smurf';
@@ -22,6 +23,7 @@ class SmurfList extends React.Component {
                     })}
                 </div>
                 <button><Link to='/add-smurf'>Add A Smurf!</Link></button>
+                <Button color='primary'>I'm a button</Button>
             </div>
         )
     }
