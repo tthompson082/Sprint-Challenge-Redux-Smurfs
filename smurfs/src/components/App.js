@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import SmurfList from './SmurfList';
+import SmurfForm from './SmurfForm';
+import UpdateSmurf from './UpdateSmurf';
+
+import './App.css'
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -7,14 +13,17 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+
   render() {
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
+      <Router>
+        <div className="app">
+          <Link to='/'><h1 className='title'>Smurfs</h1></Link>
+          <Route exact path='/' component={SmurfList} />
+          <Route path='/add-smurf' component={SmurfForm} />
+          <Route path='/smurf/:id' component={UpdateSmurf} />
+        </div>
+      </Router>
     );
   }
 }
